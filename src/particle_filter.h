@@ -11,6 +11,7 @@
 
 #include <string>
 #include <vector>
+#include <random>
 #include "helper_functions.h"
 
 struct Particle {
@@ -120,6 +121,14 @@ class ParticleFilter {
   
   // Vector of weights of all particles
   std::vector<double> weights; 
+
+  // random number generator
+  std::default_random_engine generator;
+
+  // smallest yaw rate to treat as nonzero; also use as minimum weight
+  double epsilon = 1e-3;
+
+  double sensor_range = 50;
 };
 
 #endif  // PARTICLE_FILTER_H_
